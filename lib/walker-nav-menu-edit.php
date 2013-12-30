@@ -17,13 +17,31 @@ class Walker_Nav_Menu_Edit extends \Walker_Nav_Menu_Edit{
 			return parent::start_el( $output, $item, $depth, $args, $id );
 		
 		$vars = (object) array(
+			'cancel_href' => esc_url( 
+								add_query_arg( 
+									array( 
+										'edit-menu-item' => $item_id, 
+										'cancel' => time() 
+									), admin_url( 'nav-menus.php' )
+								) 
+							 ),
+			'delete_href' => wp_nonce_url(
+								add_query_arg(
+									array(
+										'action' => 'delete-menu-item',
+										'menu-item' => $item->ID,
+									),
+									admin_url( 'nav-menus.php' )
+								),
+								'delete-menu_item_' . $item->ID
+							 ),
 			'depth' => $depth,
 			'item_id' => esc_attr( $item->ID ),
 			'menu_item_parent' => $item->menu_item_parent,
 			'menu_order' => $item->menu_order,
 			'object_id' => $item->object_id,
 			'submenu_text' => $depth < 1 ? 'style="display:none;"' : '',
-			'title' => $item->title
+			'title' => trim( $item->title ) ? $item->title : 'WP_Query'
 		);
 		
 		$removed_args = array(
