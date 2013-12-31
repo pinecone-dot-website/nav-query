@@ -13,7 +13,7 @@ class Walker_Nav_Menu_Edit extends \Walker_Nav_Menu_Edit{
 	*	@return string
 	*/
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ){
-		if( $item->type != 'WP_Query')
+		if( $item->type != 'wp_query')
 			return parent::start_el( $output, $item, $depth, $args, $id );
 		
 		$vars = (object) array(
@@ -62,8 +62,7 @@ class Walker_Nav_Menu_Edit extends \Walker_Nav_Menu_Edit{
 		// @see http://stackoverflow.com/questions/6054033/pretty-printing-json-with-php
 		$object = unserialize( $item->object );
 		$vars->object = json_encode( $object, JSON_PRETTY_PRINT );
-		
-		//$vars->object = $item->object;
+		//$vars->object = urldecode( http_build_query($object) );
 		
 		$output .= render( 'admin/nav-menus-edit', $vars );
 	}

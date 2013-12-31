@@ -8,7 +8,7 @@
 					<input type="text" value="WP_Query" name="menu-item[-1][menu-item-object-id]" class="menu-item-nav-query">
 					
 					<input type="text" value="<?= esc_html( $default ); ?>" name="menu-item[-1][menu-item-object]" class="menu-item-nav-query">
-					<input type="text" value="WP_Query" name="menu-item[-1][menu-item-type]" class="menu-item-nav-query">
+					<input type="text" value="wp_query" name="menu-item[-1][menu-item-type]" class="menu-item-nav-query">
 				</li>
 			</ul>
 		</div>

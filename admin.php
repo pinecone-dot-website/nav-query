@@ -37,6 +37,18 @@ function add_meta_boxes_navmenu_render( $null, $args ){
 }
 
 /*
+*	recursively change all stdclass into arrays
+*/
+function make_arrays_r( &$r ){
+	if( is_object($r) )
+		$r = (array) $r;
+		
+	if( is_array($r) || is_object($r) )
+		foreach( $r as &$sub )
+			make_arrays_r( $sub );
+}
+
+/*
 *
 *	@param string
 *	@param int
@@ -61,11 +73,10 @@ add_filter( 'wp_edit_nav_menu_walker', __NAMESPACE__.'\wp_edit_nav_menu_walker',
 *	@param array
 */
 function wp_update_nav_menu_item( $menu_id, $menu_item_db_id, $args ){
-	if( $args['menu-item-type'] != 'WP_Query' )
+	if( $args['menu-item-type'] != 'wp_query' )
 		return;
 		
 	$object = stripslashes( $args['menu-item-object'] );
-	
 	
 	// from update
 	if( ($_object = json_decode($object)) && is_object($_object) ){
@@ -82,6 +93,9 @@ function wp_update_nav_menu_item( $menu_id, $menu_item_db_id, $args ){
 		
 		//die();
 	}
+	
+	make_arrays_r( $object );
+	dbug( $object );
 	
 	// @TODO make this better, handle dynamic stuff
 	if( isset($object->tax_query) ){
