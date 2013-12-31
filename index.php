@@ -17,7 +17,10 @@ if( !defined('NAV_QUERY_PLUGINS_URL') )
 */
 function menu_objects_format( &$post, $index, $args ){
 	$post->menu_item_parent = $args['menu_item_parent'];
+	$post->object = 'query';
+	$post->object_id = $post->ID;
 	$post->title = $post->post_title;
+	$post->type = 'post_type';
 	$post->url = get_permalink( $post->ID );
 }
 
@@ -42,8 +45,10 @@ function wp_nav_menu_objects( $sorted_menu_items, $args ){
 		$start = array_slice( $sorted_menu_items, 0, $k - 1 );
 		$end = array_slice( $sorted_menu_items, $k );
 		
-		$menu_items = array_walk( $sub_query->posts, __NAMESPACE__.'\menu_objects_format', 
+		array_walk( $sub_query->posts, __NAMESPACE__.'\menu_objects_format', 
 								  array('menu_item_parent' => $item->menu_item_parent) );
+		
+		_wp_menu_item_classes_by_context( $sub_query->posts );
 		
 		$sorted_menu_items = array_merge( $start, $sub_query->posts, $end );
 	}
@@ -52,6 +57,12 @@ function wp_nav_menu_objects( $sorted_menu_items, $args ){
 }
 add_filter( 'wp_nav_menu_objects', __NAMESPACE__.'\wp_nav_menu_objects', 10, 2 );
 
+/*
+*
+*	@param string
+*	@param array
+*	@return string
+*/
 function render( $file, $vars = array() ){
 	extract( (array) $vars );
 	
