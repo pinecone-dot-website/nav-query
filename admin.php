@@ -79,6 +79,7 @@ function wp_update_nav_menu_item( $menu_id, $menu_item_db_id, $args ){
 	$object = stripslashes( $args['menu-item-object'] );
 	
 	// from update
+	
 	if( ($_object = json_decode($object)) && is_object($_object) ){
 		$object = $_object;
 	} elseif( ($_object = unserialize($object)) ){
@@ -95,7 +96,7 @@ function wp_update_nav_menu_item( $menu_id, $menu_item_db_id, $args ){
 	}
 	
 	make_arrays_r( $object );
-	dbug( $object );
+	//dbug( $object );
 	
 	// @TODO make this better, handle dynamic stuff
 	if( isset($object->tax_query) ){
