@@ -18,7 +18,12 @@
 	</dl>
 	
 	<div class="menu-item-settings" id="menu-item-settings-<?= $item_id; ?>">
-		<input type="text" class="menu-item-data-title" name="menu-item-title[<?= $item_id; ?>]" value="<?= esc_attr( $title ); ?>" />
+		<p class="description description-thin">
+			<label for="">
+				Navigation Label<br/>
+				<input type="text" class="menu-item-data-title" name="menu-item-title[<?= $item_id; ?>]" value="<?= esc_attr( $title ); ?>" />
+			</label>
+		</p>
 		
 		<textarea class="full js" name="menu-item-object[<?= $item_id; ?>]"><?= esc_attr( $object ); ?></textarea>
 		
