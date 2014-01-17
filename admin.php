@@ -1,4 +1,4 @@
-<?
+<?php
 
 namespace navquery;
 
@@ -84,7 +84,7 @@ function wp_update_nav_menu_item( $menu_id, $menu_item_db_id, $args ){
 	/*
 	} elseif( trim($object) ){
 		// using native php array syntax - probably a bad idea 
-		$tokens = token_get_all( '<? '.$object.' ?>' ); 
+		$tokens = token_get_all( '<?php '.$object.' ?>' ); 
 		
 		foreach( $tokens as $token ){
 			//dbug( $token, token_name($token[0]) );
