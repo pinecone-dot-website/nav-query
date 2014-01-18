@@ -13,7 +13,7 @@ class Walker_Nav_Menu_Edit extends \Walker_Nav_Menu_Edit{
 	*	@return string
 	*/
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ){
-		if( $item->type != 'wp_query')
+		if( $item->type != 'WP_Query')
 			return parent::start_el( $output, $item, $depth, $args, $id );
 		
 		$vars = (object) array(

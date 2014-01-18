@@ -59,6 +59,9 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 
 == Changelog ==
 
+= 0.2 =
+* current-menu-item and other default classes applied
+
 = 0.1 =
 * first working version
 
