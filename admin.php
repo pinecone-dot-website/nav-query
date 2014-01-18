@@ -22,14 +22,7 @@ function add_meta_boxes_navmenu_render( $null, $args ){
 		'default' => json_encode( array(
 			'paged' => 1,
 			'posts_per_page' => 5,
-			'post_type' => 'post',
-			'tax_query' => array(
-				array(
-					'taxonomy' => 'artist_status',
-					'field' => 'slug',
-					'terms' => 'current',
-				)
-			)
+			'post_type' => 'post'
 		) )
 	);
 	
@@ -88,27 +81,21 @@ function wp_update_nav_menu_item( $menu_id, $menu_item_db_id, $args ){
 	} elseif( parse_str($object, $_object) || count( array_filter($_object)) ){
 		// query string
 		$object = $_object;
-	} else {
+	/*
+	} elseif( trim($object) ){
 		// using native php array syntax - probably a bad idea 
 		$tokens = token_get_all( '<? '.$object.' ?>' ); 
 		
 		foreach( $tokens as $token ){
 			//dbug( $token, token_name($token[0]) );
 		}
-		
-		//die();
+	*/
+	} else {
+		$object = '';
 	}
 	
 	make_arrays_r( $object );
-	//dbug( $object );
-	
-	// @TODO make this better, handle dynamic stuff
-	if( isset($object->tax_query) ){
-		foreach( $object->tax_query as &$tax_query )
-			$tax_query = (array) $tax_query;
-			
-		//ddbug($object->tax_query);
-	}
+	//
 	
 	$object = serialize( $object );
 	

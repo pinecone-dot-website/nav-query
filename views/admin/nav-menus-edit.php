@@ -17,7 +17,7 @@
 		</dt>
 	</dl>
 	
-	<div class="menu-item-settings" id="menu-item-settings-<?= $item_id; ?>">
+	<div class="menu-item-settings nav-query" id="menu-item-settings-<?= $item_id; ?>">
 		<p class="description description-thin">
 			<label for="">
 				Navigation Label<br/>
@@ -25,7 +25,7 @@
 			</label>
 		</p>
 		
-		<textarea class="full js" name="menu-item-object[<?= $item_id; ?>]"><?= esc_attr( $object ); ?></textarea>
+		<textarea name="menu-item-object[<?= $item_id; ?>]"><?= esc_attr( $object ); ?></textarea>
 		
 		<div class="menu-item-actions description-wide submitbox">
 			<a class="item-delete submitdelete deletion" id="delete-<?= $item_id; ?>" href="<?= $delete_href; ?>"><? _e( 'Remove' ); ?></a>

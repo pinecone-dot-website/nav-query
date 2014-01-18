@@ -17,9 +17,13 @@ Allows dynamic menu creation using WP_Query syntax
 
 == Frequently Asked Questions ==
 
-= Can I use query string syntax =
+= Can I use query string syntax? =
 
 Yes you can.
+
+= Can I use json arrays? =
+
+That's probably better than using query strings.
 
 == Screenshots ==
 
@@ -30,6 +34,9 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 2. This is the second screen shot
 
 == Changelog ==
+
+= 0.4 =
+* major refinements to admin ui *
 
 = 0.2 =
 * current-menu-item and other default classes applied
