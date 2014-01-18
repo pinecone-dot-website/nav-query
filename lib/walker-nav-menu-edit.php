@@ -62,7 +62,7 @@ class Walker_Nav_Menu_Edit extends \Walker_Nav_Menu_Edit{
 		// @see http://stackoverflow.com/questions/6054033/pretty-printing-json-with-php
 		$object = unserialize( $item->object );
 		
-		if( defined(JSON_PRETTY_PRINT) )
+		if( defined('JSON_PRETTY_PRINT') )
 			$vars->object = json_encode( $object, JSON_PRETTY_PRINT );
 		else
 			$vars->object = json_encode( $object );

@@ -19,7 +19,7 @@ add_action( 'load-nav-menus.php', __NAMESPACE__.'\add_meta_boxes_navmenu', 10 );
 */
 function add_meta_boxes_navmenu_render( $null, $args ){
 	$vars = array(
-		'default' => serialize( array(
+		'default' => json_encode( array(
 			'paged' => 1,
 			'posts_per_page' => 5,
 			'post_type' => 'post',
@@ -79,14 +79,18 @@ function wp_update_nav_menu_item( $menu_id, $menu_item_db_id, $args ){
 	$object = stripslashes( $args['menu-item-object'] );
 	
 	// from update
-	
 	if( ($_object = json_decode($object)) && is_object($_object) ){
+		// json syntax
 		$object = $_object;
 	} elseif( ($_object = unserialize($object)) ){
+		// serialized php
+		$object = $_object;
+	} elseif( parse_str($object, $_object) || count( array_filter($_object)) ){
+		// query string
 		$object = $_object;
 	} else {
+		// using native php array syntax - probably a bad idea 
 		$tokens = token_get_all( '<? '.$object.' ?>' ); 
-		//dbug( $tokens );
 		
 		foreach( $tokens as $token ){
 			//dbug( $token, token_name($token[0]) );
