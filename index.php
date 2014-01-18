@@ -1,20 +1,19 @@
 <?
-/*
-Plugin Name: NAV QUERY
-Plugin URI: 
-Description: 
-Author: 
-Version: 0.0.1
-Author URI: 
-*/
 
 namespace navquery;
 
 if( is_admin() )
 	require __DIR__.'/admin.php';
 
+if( !defined('NAV_QUERY_PLUGINS_URL') )
+	define( 'NAV_QUERY_PLUGINS_URL', plugins_url('/public/', __FILE__) );
+	
 /*
+*	array_walk callback
 *	format post object into nav_item compatible
+*	@param WP_Post
+*	@param int
+*	@param array
 */
 function menu_objects_format( &$post, $index, $args ){
 	$post->menu_item_parent = $args['menu_item_parent'];
@@ -37,10 +36,8 @@ function wp_nav_menu_objects( $sorted_menu_items, $args ){
 			continue;
 		
 		$args = unserialize( $item->object );
-		//ddbug($args);
 		
 		$sub_query = new \WP_Query( $args );
-		//ddbug($sub_query->request);
 		
 		$start = array_slice( $sorted_menu_items, 0, $k - 1 );
 		$end = array_slice( $sorted_menu_items, $k );
@@ -49,7 +46,6 @@ function wp_nav_menu_objects( $sorted_menu_items, $args ){
 								  array('menu_item_parent' => $item->menu_item_parent) );
 		
 		$sorted_menu_items = array_merge( $start, $sub_query->posts, $end );
-		//ddbug( (array) $item );
 	}
 	
 	return $sorted_menu_items;

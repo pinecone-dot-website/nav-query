@@ -43,7 +43,7 @@ function add_meta_boxes_navmenu_render( $null, $args ){
 *	@return string
 */
 function wp_edit_nav_menu_walker( $walker_class_name, $menu_id ){
-	wp_register_style( 'nav-query', plugins_url('/public/admin/nav-menus.css', __FILE__) );
+	wp_register_style( 'nav-query', NAV_QUERY_PLUGINS_URL.'admin/nav-menus.css' );
 	wp_enqueue_style( 'nav-query' );
 	
 	require __DIR__.'/lib/walker-nav-menu-edit.php';
