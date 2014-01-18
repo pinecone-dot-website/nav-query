@@ -28,12 +28,12 @@ That's probably better than using query strings.
 == Screenshots ==
 
 1. UI for adding common query parameters
-1. And it shows up, right in your menu
+2. And it shows up, right in your menu
 
 == Changelog ==
 
 = 0.4 =
-* major refinements to admin ui *
+* major refinements to admin ui
 
 = 0.2 =
 * current-menu-item and other default classes applied
