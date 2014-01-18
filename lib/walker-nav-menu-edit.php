@@ -63,8 +63,6 @@ class Walker_Nav_Menu_Edit extends \Walker_Nav_Menu_Edit{
 		$object = unserialize( $item->object );
 		if( empty($object) )
 			$object = (object) array();
-			
-		//dbug( $object );
 		
 		if( defined('JSON_PRETTY_PRINT') )
 			$vars->object = json_encode( $object, JSON_PRETTY_PRINT );
