@@ -1,12 +1,14 @@
-<?
+<?php
 
 namespace navquery;
 
-if( is_admin() )
-	require __DIR__.'/admin.php';
-
+// handy if directory is symlinked. something along the lines of
+// define( 'NAV_QUERY_PLUGINS_URL', '/wp-content/plugins/nav-query/public/' );
 if( !defined('NAV_QUERY_PLUGINS_URL') )
 	define( 'NAV_QUERY_PLUGINS_URL', plugins_url('/public/', __FILE__) );
+
+if( is_admin() )
+	require __DIR__.'/admin.php';
 	
 /*
 *	array_walk callback
@@ -31,18 +33,28 @@ function menu_objects_format( &$post, $index, $args ){
 *	@return	array
 */
 function wp_nav_menu_objects( $sorted_menu_items, $args ){
+	$k = 0;
 	
-	foreach( $sorted_menu_items as $k => $item ){
-		//dbug( (array) $item );
+	// for some reason it starts at 1
+	$sorted_menu_items = array_values($sorted_menu_items);
+	
+	// doing a foreach here does not work, because of adding and removing items from $sorted_menu_items
+	do{
+		
+		$item = $sorted_menu_items[$k];
+		$k++;
 		
 		if( $item->type != 'wp_query' )
 			continue;
+			
 		
 		$args = unserialize( $item->object );
 		
 		$sub_query = new \WP_Query( $args );
 		
 		$start = array_slice( $sorted_menu_items, 0, $k - 1 );
+		
+		//var_dump($start);die();
 		$end = array_slice( $sorted_menu_items, $k );
 		
 		array_walk( $sub_query->posts, __NAMESPACE__.'\menu_objects_format', 
@@ -50,8 +62,8 @@ function wp_nav_menu_objects( $sorted_menu_items, $args ){
 		
 		_wp_menu_item_classes_by_context( $sub_query->posts );
 		
-		$sorted_menu_items = array_merge( $start, $sub_query->posts, $end );
-	}
+		$sorted_menu_items = ( array_merge($start, $sub_query->posts, $end) );
+	} while( isset($sorted_menu_items[$k]) );
 	
 	return $sorted_menu_items;
 }

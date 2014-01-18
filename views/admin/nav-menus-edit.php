@@ -1,9 +1,9 @@
-<li id="menu-item-<?= $item_id; ?>" class="menu-item menu-item-page menu-item-edit-inactive menu-item-depth-<?= $depth; ?>">
+<li id="menu-item-<?php echo $item_id; ?>" class="menu-item menu-item-page menu-item-edit-inactive menu-item-depth-<?php echo $depth; ?>">
 	<dl class="menu-item-bar">
 		<dt class="menu-item-handle">
 			<span class="item-title">
-				<span class="menu-item-title"><?= esc_html( $title ); ?></span>
-				<span class="is-submenu" <?= $submenu_text; ?>><? _e( 'sub item' ); ?></span>
+				<span class="menu-item-title"><?php echo esc_html( $title ); ?></span>
+				<span class="is-submenu" <?php echo $submenu_text; ?>><?php _e( 'sub item' ); ?></span>
 			</span>
 			
 			<span class="item-controls">
@@ -12,35 +12,35 @@
 				
 				</span>
 				
-				<a class="item-edit" id="edit-<?= $item_id; ?>" title="<? esc_attr_e( 'Edit Menu Item' ); ?>" href="<?= $control_href; ?>">Edit WP_Query</a>
+				<a class="item-edit" id="edit-<?php echo $item_id; ?>" title="<?php esc_attr_e( 'Edit Menu Item' ); ?>" href="<?php echo $control_href; ?>">Edit WP_Query</a>
 			</span>
 		</dt>
 	</dl>
 	
-	<div class="menu-item-settings nav-query" id="menu-item-settings-<?= $item_id; ?>">
+	<div class="menu-item-settings nav-query" id="menu-item-settings-<?php echo $item_id; ?>">
 		<p class="description description-thin">
 			<label for="">
 				Navigation Label<br/>
-				<input type="text" class="menu-item-data-title" name="menu-item-title[<?= $item_id; ?>]" value="<?= esc_attr( $title ); ?>" />
+				<input type="text" class="menu-item-data-title" name="menu-item-title[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $title ); ?>" />
 			</label>
 		</p>
 		
-		<textarea name="menu-item-object[<?= $item_id; ?>]"><?= esc_attr( $object ); ?></textarea>
+		<textarea name="menu-item-object[<?php echo $item_id; ?>]"><?php echo esc_attr( $object ); ?></textarea>
 		
 		<div class="menu-item-actions description-wide submitbox">
-			<a class="item-delete submitdelete deletion" id="delete-<?= $item_id; ?>" href="<?= $delete_href; ?>"><? _e( 'Remove' ); ?></a>
+			<a class="item-delete submitdelete deletion" id="delete-<?php echo $item_id; ?>" href="<?php echo $delete_href; ?>"><?php _e( 'Remove' ); ?></a>
 						
 			<span class="meta-sep hide-if-no-js"> | </span>
 			
-			<a class="item-cancel submitcancel hide-if-no-js" id="cancel-<?= $item_id; ?>" href="<?= $cancek_href; ?>#menu-item-settings-<?= $item_id; ?>"><? _e( 'Cancel' ); ?></a>
+			<a class="item-cancel submitcancel hide-if-no-js" id="cancel-<?php echo $item_id; ?>" href="<?php echo $cancek_href; ?>#menu-item-settings-<?php echo $item_id; ?>"><?php _e( 'Cancel' ); ?></a>
 		</div>
 	
-		<input type="hidden" class="menu-item-data-db-id" name="menu-item-db-id[<?= $item_id; ?>]" value="<?= $item_id; ?>" />
-		<input type="hidden" class="menu-item-data-object-id" name="menu-item-object-id[<?= $item_id; ?>]" value="<?= esc_attr( $object_id ); ?>" />
+		<input type="hidden" class="menu-item-data-db-id" name="menu-item-db-id[<?php echo $item_id; ?>]" value="<?php echo $item_id; ?>" />
+		<input type="hidden" class="menu-item-data-object-id" name="menu-item-object-id[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $object_id ); ?>" />
 		
-		<input type="hidden" class="menu-item-data-parent-id" name="menu-item-parent-id[<?= $item_id; ?>]" value="<?= esc_attr( $menu_item_parent ); ?>" />
-		<input type="hidden" class="menu-item-data-position" name="menu-item-position[<?= $item_id; ?>]" value="<?= esc_attr( $menu_order ); ?>" />
-		<input type="hidden" class="menu-item-data-type" name="menu-item-type[<?= $item_id; ?>]" value="wp_query" />
+		<input type="hidden" class="menu-item-data-parent-id" name="menu-item-parent-id[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $menu_item_parent ); ?>" />
+		<input type="hidden" class="menu-item-data-position" name="menu-item-position[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $menu_order ); ?>" />
+		<input type="hidden" class="menu-item-data-type" name="menu-item-type[<?php echo $item_id; ?>]" value="wp_query" />
 	</div>		
 	
 	
