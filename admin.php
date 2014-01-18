@@ -46,6 +46,9 @@ function wp_edit_nav_menu_walker( $walker_class_name, $menu_id ){
 	wp_register_style( 'nav-query', NAV_QUERY_PLUGINS_URL.'admin/nav-menus.css' );
 	wp_enqueue_style( 'nav-query' );
 	
+	wp_register_script( 'nav-query', NAV_QUERY_PLUGINS_URL.'admin/nav-menus.js', array('jquery') );
+	wp_enqueue_script( 'nav-query' );
+	
 	require __DIR__.'/lib/walker-nav-menu-edit.php';
 	return __NAMESPACE__.'\Walker_Nav_Menu_Edit';
 }
@@ -58,16 +61,26 @@ add_filter( 'wp_edit_nav_menu_walker', __NAMESPACE__.'\wp_edit_nav_menu_walker',
 *	@param array
 */
 function wp_update_nav_menu_item( $menu_id, $menu_item_db_id, $args ){
-	if( $args['menu-item-type'] != 'wp_query' )
+	if( $args['menu-item-type'] != 'WP_Query' )
 		return;
 		
-	$object = $args['menu-item-object'];
+	$object = stripslashes( $args['menu-item-object'] );
+	
 	
 	// from update
-	if( ($_object = json_decode(stripslashes($object))) && is_object($_object) ){
+	if( ($_object = json_decode($object)) && is_object($_object) ){
 		$object = $_object;
-	} elseif( ($_object = unserialize(stripslashes($object))) ){
+	} elseif( ($_object = unserialize($object)) ){
 		$object = $_object;
+	} else {
+		$tokens = token_get_all( '<? '.$object.' ?>' ); 
+		//dbug( $tokens );
+		
+		foreach( $tokens as $token ){
+			//dbug( $token, token_name($token[0]) );
+		}
+		
+		//die();
 	}
 	
 	// @TODO make this better, handle dynamic stuff

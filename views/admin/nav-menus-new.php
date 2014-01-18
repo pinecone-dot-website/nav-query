@@ -2,8 +2,6 @@
 	<div class="tabs-panel-active">
 		<div class="categorychecklist">
 			<ul>
-				<li><textarea name="nav-query" checked="checked"></textarea></li>
-				
 				<li>
 					<label><input type="checkbox" name="menu-item[-1][menu-item-nav-query]" value="where-is-this" checked="checked"/></label>
 					
