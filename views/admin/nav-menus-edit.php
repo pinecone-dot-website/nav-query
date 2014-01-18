@@ -35,7 +35,7 @@
 		
 		<input type="hidden" class="menu-item-data-parent-id" name="menu-item-parent-id[<?= $item_id; ?>]" value="<?= esc_attr( $menu_item_parent ); ?>" />
 		<input type="hidden" class="menu-item-data-position" name="menu-item-position[<?= $item_id; ?>]" value="<?= esc_attr( $menu_order ); ?>" />
-		<input type="hidden" class="menu-item-data-type" name="menu-item-type[<?= $item_id; ?>]" value="WP_Query" />
+		<input type="hidden" class="menu-item-data-type" name="menu-item-type[<?= $item_id; ?>]" value="wp_query" />
 	</div>		
 	
 	
