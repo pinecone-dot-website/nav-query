@@ -1,6 +1,9 @@
 jQuery(document).ready( function($){
 	"use strict";
 	
+	/*
+	*
+	*/
 	$( document ).ajaxSuccess( function(e, xhr, settings){
 	    var request = {}, 
 	    	pairs = settings.data.split('&'), 
@@ -13,13 +16,10 @@ jQuery(document).ready( function($){
 		
 		// reset title and checkbox
 		if( request['menu-item[-1][menu-item-type]'] == 'wp_query' ){
-			$('#nav-query-post input[type=checkbox]').attr('checked', 1)
+			$('#nav-query-post input[type=checkbox]').attr( 'checked', 1 );
 			$('#nav-query-post input[type=text]').val( 'WP_Query' );
-			
-			//alert();
-		}
-			
-	});
+		}	
+	} );
 
 	/*
 	*
@@ -37,19 +37,23 @@ jQuery(document).ready( function($){
 	
 	/*
 	*
+	*	@param jquery textarea
+	*	@return jquery textarea
 	*/
 	function nav_query( $item ){
-		$
 		/*
 		*
+		*	@param string
+		*	@param string
+		*	@param string json parsable
+		*	@param string
 		*/
-		$item.__proto__.add_button = function( title, arg_name, arg_type, help_text ){
+		$item.__proto__.add_button = function( title, arg_name, arg_default, help_text ){
 			var $button = jQuery( '<button>' ).html( title ).attr( 'title', help_text ).click( function(e){
-				var params;
-				params = $item.data( 'nav-query-params' );
+				var params = $item.data( 'nav-query-params' );
 				
 				if( params ){
-					params[arg_name] = JSON.parse( arg_type );
+					params[arg_name] = JSON.parse( arg_default );
 					$item.val( JSON.stringify(params, null, "\t") );
 				}
 					
@@ -78,7 +82,6 @@ jQuery(document).ready( function($){
 		*
 		*/
 		$item.keydown( function(e){
-			// 4 spaces for tab
 			if( e.keyCode == 9 ){
 				// get caret position/selection
 		        var start = this.selectionStart;
@@ -89,7 +92,7 @@ jQuery(document).ready( function($){
 		        // set textarea value to: text before caret + tab + text after caret
 		        $item.val( value.substring(0, start)
 		                    + "\t"
-		                    + value.substring(end));
+		                    + value.substring(end) );
 		
 		        // put caret at right position again (add one for the tab)
 		        this.selectionStart = this.selectionEnd = start + 1;
