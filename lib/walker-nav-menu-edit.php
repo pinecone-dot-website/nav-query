@@ -20,7 +20,7 @@ class Walker_Nav_Menu_Edit extends \Walker_Nav_Menu_Edit{
 			'cancel_href' => esc_url( 
 								add_query_arg( 
 									array( 
-										'edit-menu-item' => $item_id, 
+										'edit-menu-item' => $item->ID, 
 										'cancel' => time() 
 									), admin_url( 'nav-menus.php' )
 								) 
