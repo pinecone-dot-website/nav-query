@@ -75,12 +75,12 @@ function wp_update_nav_menu_item( $menu_id, $menu_item_db_id, $args ){
 	if( ($_object = json_decode($object)) && is_object($_object) ){
 		// json syntax
 		$object = $_object;
-	} elseif( ($_object = unserialize($object)) ){
-		// serialized php
-		$object = $_object;
 	} elseif( parse_str($object, $_object) || count( array_filter($_object)) ){
 		// query string
 		$object = $_object;
+	} elseif( ($_object = unserialize($object)) ){
+		// serialized php - probably remove this
+		$object = $_object; 
 	/*
 	} elseif( trim($object) ){
 		// using native php array syntax - probably a bad idea 

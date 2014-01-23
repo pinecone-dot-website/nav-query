@@ -32,6 +32,9 @@ That's probably better than using query strings.
 
 == Changelog ==
 
+= 0.41 =
+* minor cleanup
+
 = 0.4 =
 * major refinements to admin ui
 
