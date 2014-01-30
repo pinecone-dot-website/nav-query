@@ -3,7 +3,7 @@
 		<dt class="menu-item-handle">
 			<span class="item-title">
 				<span class="menu-item-title"><?php echo esc_html( $title ); ?></span>
-				<span class="is-submenu" <?php echo $submenu_text; ?>><?php _e( 'sub item' ); ?></span>
+				<span class="is-submenu" <?php echo $submenu_text; ?>><?php _e( 'sub item', 'nav-query' ); ?></span>
 			</span>
 			
 			<span class="item-controls">
@@ -12,7 +12,7 @@
 				
 				</span>
 				
-				<a class="item-edit" id="edit-<?php echo $item_id; ?>" title="<?php esc_attr_e( 'Edit Menu Item' ); ?>" href="<?php echo $control_href; ?>">Edit WP_Query</a>
+				<a class="item-edit" id="edit-<?php echo $item_id; ?>" title="<?php esc_attr_e( 'Edit Menu Item', 'nav-query' ); ?>" href="<?php echo $control_href; ?>"><?php _e( 'Edit WP_Query', 'nav-query' ); ?></a>
 			</span>
 		</dt>
 	</dl>
@@ -20,7 +20,7 @@
 	<div class="menu-item-settings nav-query" id="menu-item-settings-<?php echo $item_id; ?>">
 		<p class="description description-thin">
 			<label for="">
-				Navigation Label<br/>
+				<?php _e( 'Navigation Label', 'nav-query' ); ?><br/>
 				<input type="text" class="menu-item-data-title" name="menu-item-title[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $title ); ?>" />
 			</label>
 		</p>
@@ -28,11 +28,11 @@
 		<textarea name="menu-item-object[<?php echo $item_id; ?>]"><?php echo esc_attr( $object ); ?></textarea>
 		
 		<div class="menu-item-actions description-wide submitbox">
-			<a class="item-delete submitdelete deletion" id="delete-<?php echo $item_id; ?>" href="<?php echo $delete_href; ?>"><?php _e( 'Remove' ); ?></a>
+			<a class="item-delete submitdelete deletion" id="delete-<?php echo $item_id; ?>" href="<?php echo $delete_href; ?>"><?php _e( 'Remove', 'nav-query' ); ?></a>
 						
 			<span class="meta-sep hide-if-no-js"> | </span>
 			
-			<a class="item-cancel submitcancel hide-if-no-js" id="cancel-<?php echo $item_id; ?>" href="<?php echo $cancek_href; ?>#menu-item-settings-<?php echo $item_id; ?>"><?php _e( 'Cancel' ); ?></a>
+			<a class="item-cancel submitcancel hide-if-no-js" id="cancel-<?php echo $item_id; ?>" href="<?php echo $cancel_href; ?>#menu-item-settings-<?php echo $item_id; ?>"><?php _e( 'Cancel', 'nav-query' ); ?></a>
 		</div>
 	
 		<input type="hidden" class="menu-item-data-db-id" name="menu-item-db-id[<?php echo $item_id; ?>]" value="<?php echo $item_id; ?>" />

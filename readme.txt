@@ -32,6 +32,9 @@ That's probably better than using query strings.
 
 == Changelog ==
 
+= 0.45 =
+* added internationalization
+
 = 0.41 =
 * minor cleanup
 
