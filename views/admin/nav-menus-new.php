@@ -6,7 +6,7 @@
 					<label><input type="checkbox" name="menu-item[-1][menu-item-nav-query]" value="where-is-this" checked="checked"/></label>
 					
 					<label class="howto" for="">
-						<span>Label</span>
+						<span><?php _e( 'Label', 'nav-query' ); ?></span>
 						<input type="text" value="WP_Query" name="menu-item[-1][menu-item-title]" class="menu-item-nav-query">
 					</label>
 					

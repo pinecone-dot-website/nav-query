@@ -40,7 +40,6 @@ function wp_nav_menu_objects( $sorted_menu_items, $args ){
 	
 	// doing a foreach here does not work, because of adding and removing items from $sorted_menu_items
 	do{
-		
 		$item = $sorted_menu_items[$k];
 		$k++;
 		
@@ -68,6 +67,14 @@ function wp_nav_menu_objects( $sorted_menu_items, $args ){
 	return $sorted_menu_items;
 }
 add_filter( 'wp_nav_menu_objects', __NAMESPACE__.'\wp_nav_menu_objects', 10, 2 );
+
+/*
+*
+*/
+function plugins_loaded() {
+    load_plugin_textdomain( 'nav-query', FALSE, __DIR__.'/lang/' );
+}
+add_action( 'plugins_loaded', __NAMESPACE__.'\plugins_loaded' );
 
 /*
 *

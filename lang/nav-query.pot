@@ -1,0 +1,60 @@
+# Copyright (C) 2014 NAV QUERY
+# This file is distributed under the same license as the NAV QUERY package.
+msgid ""
+msgstr ""
+"Project-Id-Version: NAV QUERY 0.45\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/nav-query\n"
+"POT-Creation-Date: 2014-01-30 19:20:52+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: views/admin/nav-menus-edit.php:6
+msgid "sub item"
+msgstr ""
+
+#: views/admin/nav-menus-edit.php:15
+msgid "Edit Menu Item"
+msgstr ""
+
+#: views/admin/nav-menus-edit.php:15
+msgid "Edit WP_Query"
+msgstr ""
+
+#: views/admin/nav-menus-edit.php:23
+msgid "Navigation Label"
+msgstr ""
+
+#: views/admin/nav-menus-edit.php:31
+msgid "Remove"
+msgstr ""
+
+#: views/admin/nav-menus-edit.php:35
+msgid "Cancel"
+msgstr ""
+
+#: views/admin/nav-menus-new.php:9
+msgid "Label"
+msgstr ""
+#. Plugin Name of the plugin/theme
+msgid "NAV QUERY"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/plugins/nav-query/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "create dynamic nav menus using wp_query"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "postpostmodern, pinecone-dot-io"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://pinecone.io/"
+msgstr ""
