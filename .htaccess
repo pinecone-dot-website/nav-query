@@ -1,0 +1,5 @@
+RewriteEngine on
+
+#only allow http access to public directory
+RewriteCond %{REQUEST_URI} !^(.*)/public/
+RewriteRule ^(.*)$ /index.php?q=$1 [L,QSA]
