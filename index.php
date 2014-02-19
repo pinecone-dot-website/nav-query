@@ -2,6 +2,15 @@
 
 namespace navquery;
 
+spl_autoload_register( function($class){
+	$class = str_replace( __NAMESPACE__.'\\', '', $class );
+	$class = str_replace( '_', '-', $class );
+	$class = strtolower( $class ).'.php';
+	
+	if( file_exists(__DIR__.'/lib/'.$class) )
+		require __DIR__.'/lib/'.$class;
+} );
+
 // handy if directory is symlinked. something along the lines of
 // define( 'NAV_QUERY_PLUGINS_URL', '/wp-content/plugins/nav-query/public/' );
 if( !defined('NAV_QUERY_PLUGINS_URL') )

@@ -54,7 +54,7 @@ function wp_edit_nav_menu_walker( $walker_class_name, $menu_id ){
 	wp_register_script( 'nav-query', NAV_QUERY_PLUGINS_URL.'admin/nav-menus.js', array('jquery') );
 	wp_enqueue_script( 'nav-query' );
 	
-	require __DIR__.'/lib/walker-nav-menu-edit.php';
+	//require __DIR__.'/lib/walker-nav-menu-edit.php';
 	return __NAMESPACE__.'\Walker_Nav_Menu_Edit';
 }
 add_filter( 'wp_edit_nav_menu_walker', __NAMESPACE__.'\wp_edit_nav_menu_walker', 10, 2 );
