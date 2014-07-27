@@ -32,8 +32,8 @@ That's probably better than using query strings.
 
 == Changelog ==
 
-= .5 =
-*
+= .51 =
+* Work on svn/git sync
 
 = 0.45 =
 * added internationalization
