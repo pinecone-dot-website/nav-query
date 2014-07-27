@@ -31,6 +31,8 @@ That's probably better than using query strings.
 2. And it shows up, right in your menu
 
 == Changelog ==
+= .6 =
+* Add Nav Query Meta class
 
 = .51 =
 * Work on svn/git sync
