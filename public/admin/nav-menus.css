@@ -1,0 +1,19 @@
+#nav-query-post input[type=checkbox]{
+	display: none;
+}
+
+div.nav-query textarea{
+	background-color:  #eee;
+	font-family: monospace;
+	height: 200px;
+	margin-top: 1em;
+	width: 392px;
+}
+
+div.nav-query div.ui button{
+	background-color: #666;
+	border: 0pc solid #fff;
+	color: #fff;
+	cursor: pointer;
+	margin: .25em .5em .25em 0;
+}
