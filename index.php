@@ -2,7 +2,14 @@
 
 namespace navquery;
 
+/*
+*
+*	@param string
+*/
 spl_autoload_register( function($class){
+	if( strpos($class, __NAMESPACE__) !== 0 )
+		return;
+		
 	$class = str_replace( __NAMESPACE__.'\\', '', $class );
 	$class = str_replace( '_', '-', $class );
 	$class = strtolower( $class ).'.php';
@@ -55,22 +62,22 @@ function wp_nav_menu_objects( $sorted_menu_items, $args ){
 		if( $item->type != 'wp_query' )
 			continue;
 			
-		
 		$args = unserialize( $item->object );
 		
 		$sub_query = new \WP_Query( $args );
 		
 		$start = array_slice( $sorted_menu_items, 0, $k - 1 );
-		
-		//var_dump($start);die();
 		$end = array_slice( $sorted_menu_items, $k );
 		
-		array_walk( $sub_query->posts, __NAMESPACE__.'\menu_objects_format', 
-								  array('menu_item_parent' => $item->menu_item_parent) );
+		if( $sub_query->posts ){
+			array_walk( $sub_query->posts, __NAMESPACE__.'\menu_objects_format', 
+									  array('menu_item_parent' => $item->menu_item_parent) );
 		
-		_wp_menu_item_classes_by_context( $sub_query->posts );
 		
-		$sorted_menu_items = ( array_merge($start, $sub_query->posts, $end) );
+			_wp_menu_item_classes_by_context( $sub_query->posts );
+			
+			$sorted_menu_items = ( array_merge($start, $sub_query->posts, $end) );
+		}
 	} while( isset($sorted_menu_items[$k]) );
 	
 	return $sorted_menu_items;

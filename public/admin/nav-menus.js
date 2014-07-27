@@ -30,7 +30,7 @@ jQuery(document).ready( function($){
 		new nav_query( $item );
 		$item.add_button( 'Author', 'author', '""', 'Display posts by author, using author id' );
 		$item.add_button( 'Post In', 'post__in', '[0]', 'use post ids. Specify posts to retrieve.' );
-		$item.add_button( 'Tax Query', 'tax_query', '[{"relation": "and"}, [{ "taxonomy": "movie_genre", "field": "slug", "terms":["action", "comedy"] }]]', 'use taxonomy parameters' );
+		$item.add_button( 'Tax Query', 'tax_query', '[{"relation": "and"}, [{ "taxonomy": "category", "field": "slug", "terms":["", ""] }]]', 'use taxonomy parameters' );
 		
 		return;
 	} );

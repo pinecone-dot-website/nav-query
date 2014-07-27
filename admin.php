@@ -36,7 +36,7 @@ function make_arrays_r( &$r ){
 	if( is_object($r) )
 		$r = (array) $r;
 		
-	if( is_array($r) || is_object($r) )
+	if( is_array($r) )
 		foreach( $r as &$sub )
 			make_arrays_r( $sub );
 }
@@ -54,7 +54,6 @@ function wp_edit_nav_menu_walker( $walker_class_name, $menu_id ){
 	wp_register_script( 'nav-query', NAV_QUERY_PLUGINS_URL.'admin/nav-menus.js', array('jquery') );
 	wp_enqueue_script( 'nav-query' );
 	
-	//require __DIR__.'/lib/walker-nav-menu-edit.php';
 	return __NAMESPACE__.'\Walker_Nav_Menu_Edit';
 }
 add_filter( 'wp_edit_nav_menu_walker', __NAMESPACE__.'\wp_edit_nav_menu_walker', 10, 2 );
@@ -94,10 +93,9 @@ function wp_update_nav_menu_item( $menu_id, $menu_item_db_id, $args ){
 		$object = '';
 	}
 	
+	// 
 	make_arrays_r( $object );
-	//
-	
-	$object = serialize( $object );
+	//$object = serialize( $object );
 	
 	update_post_meta( $menu_item_db_id, '_menu_item_object', $object );
 }
