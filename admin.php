@@ -95,8 +95,9 @@ function wp_update_nav_menu_item( $menu_id, $menu_item_db_id, $args ){
 	
 	// 
 	make_arrays_r( $object );
-	//$object = serialize( $object );
 	
-	update_post_meta( $menu_item_db_id, '_menu_item_object', $object );
+	$item_object = new Nav_Query_Meta( $object );
+	
+	update_post_meta( $menu_item_db_id, '_menu_item_object', $item_object );
 }
 add_action( 'wp_update_nav_menu_item', __NAMESPACE__.'\wp_update_nav_menu_item', 10, 3 );
