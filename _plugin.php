@@ -6,7 +6,7 @@ Description:	create dynamic nav menus using wp_query
 Author:			postpostmodern, pinecone-dot-io
 Text Domain:	nav-query
 Domain Path:	/lang
-Version:		0.5
+Version:		0.51
 Author URI:		http://pinecone.io/
 */
 
