@@ -7,6 +7,7 @@ namespace navquery;
 *	@param string
 */
 spl_autoload_register( function($class){
+	
 	if( strpos($class, __NAMESPACE__) !== 0 )
 		return;
 		
@@ -62,7 +63,7 @@ function wp_nav_menu_objects( $sorted_menu_items, $args ){
 		if( $item->type != 'wp_query' )
 			continue;
 			
-		$args = unserialize( $item->object );
+		$args = $item->object->args;
 		
 		$sub_query = new \WP_Query( $args );
 		
